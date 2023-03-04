@@ -1,5 +1,3 @@
-# 풀이 생각 : 완전 탐색으로 i번째와 그 이후 값들을 비교해보자
-
 def solution(prices):
     ans = []
     l = len(prices)
@@ -14,5 +12,7 @@ def solution(prices):
         ans.append(time)
         
     return ans
-            
+# 풀이 생각 : 완전 탐색으로 i번째와 그 이후 값들을 비교해보자
+
+
 # 문제의도는 stack이나 deque를 이용하는 것이었는데 적절한 방법이 있을까

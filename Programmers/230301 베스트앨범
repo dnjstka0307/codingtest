@@ -1,5 +1,3 @@
-# 풀이 생각 : 딕셔너리로 장르별 index와 play를 저장하는 방식
-
 def solution(genres, plays):
     dicts = {i :0 for i in set(genres)}
     lists = {i : [[0,0],[0,0]] for i in set(genres)}
@@ -27,6 +25,7 @@ def solution(genres, plays):
             ans.append(lists[i[0]][1][1])
     
     return ans
+# 풀이 생각 : 딕셔너리로 장르별 index와 play를 저장하는 방식
 
 # 딕셔너리를 두개 사용하지 않고 두개로 끝낼 수 있을까?
 # 조건문 남발 대신 컴팩트하게 끝낼 수 있을까?

@@ -1,5 +1,3 @@
-# 풀이 생각 : deque로 location의 문서가 출력될 때까지 돌려보기
-
 from collections import deque
 def solution(prior, location):
     prior = deque(prior)
