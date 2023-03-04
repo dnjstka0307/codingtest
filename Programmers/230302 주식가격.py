@@ -12,6 +12,7 @@ def solution(prices):
         ans.append(time)
         
     return ans
+
 # 풀이 생각 : 완전 탐색으로 i번째와 그 이후 값들을 비교해보자
 
 

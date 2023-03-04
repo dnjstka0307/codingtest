@@ -1,5 +1,3 @@
-# 풀이 생각 : heapq를 사용해서 제일 적은 값들을 계속 빼고 넣고 하기
-
 from heapq import * 
 def solution(scoville, K):
     heapify(scoville)
@@ -13,5 +11,7 @@ def solution(scoville, K):
         heappush(scoville, new)
         ans +=1
     return ans
+
+# 풀이 생각 : heapq를 사용해서 제일 적은 값들을 계속 빼고 넣고 하기
 
 # 최소값 최대값이 반복되는 경우에는 heapq를 써보자
