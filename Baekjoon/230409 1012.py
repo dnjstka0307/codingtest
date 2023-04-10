@@ -35,6 +35,6 @@ for _ in range(case):
                 ans += 1         
     print(ans)
     
-    # 풀이 생각 : 특정 좌표와 인접한 것들을 모두 count and repeat ~ bfs사용
+    # 풀이 생각 : 특정 좌표와 인접한 것들을 모두 count and repeat ~ bfs사용, 인접한 노드들에 대한 것들은 bfs이다! dfs는 인접노드가 아니라 죽죽 이어나가는 것
     
     # 변수명할당을 계속 헛갈리게 해서 오류 발생 ~ 변수명 할당에 대한 나름대로 규칙을 세우자 
