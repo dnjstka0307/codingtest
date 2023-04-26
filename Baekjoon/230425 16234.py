@@ -1,23 +1,15 @@
 from collections import deque 
 
-# n, l, r = 3, 5 ,50
-# graph = [[50, 30, 20], [20, 40, 30], [20, 20, 30]]
-
-# n, l, r = 3, 5 ,50
-# graph = [[50, 40, 50], [50, 50, 50], [50, 50, 50]]
-
-# n, l, r = 3, 5 ,50
-# graph = [[50, 40, 50], [50, 50, 50], [50, 50, 50]]
-
-# n, l, r = 4, 1, 9
-# graph = [[96, 93, 74, 30], [60, 90, 65, 96], [5, 27, 17, 98], [10, 41, 46, 20]]
+n, l, m = map(int,input().split())
+graph = []
 dx = [0,0,-1,1]
 dy = [-1,1,0,0]
+for _ in range(n):
+    graph.append(list(map(int,input().split())))
     
-def bfs(graph,n,l,m,x,y):
+def bfs(graph,n,l,visit,m,x,y):
     que = deque()
     now = deque()
-    visit = [[0]*n for _ in range(n)]
     que.append([x,y])
     now.append([x,y])
     visit[y][x] = 1
@@ -37,16 +29,33 @@ def bfs(graph,n,l,m,x,y):
                 now.append([nx,ny])
                 total += graph[ny][nx]
     if len(now) == 1:
-        return 0
-    else:        
-        avg = int(total/len(now))
-        for x,y in now:
-            graph[y][x] = avg
+        return 0, now
+    else:         
+        return int(total/len(now)), now
 
+ans = 0    
+while True:
+    avgs = []
+    visit_list = []
+    visit = [[0]*n for _ in range(n)]
+    for x in range(n):
+        for y in range(n):
+            if visit[y][x] == 0:
+                avg, visits = bfs(graph,n,l,visit,m,x,y)
+                if avg != 0:
+                    avgs.append(avg)
+                    visit_list.append(visits)         
+    if avgs:
+        for i in range(len(avgs)):
+            for x,y in visit_list[i]:
+                graph[y][x] = avgs[i]
+        ans += 1
+    else:
+        break
     
-
-ans = 0
-for x in range(n):
-    for y in range(n):
-        ans += bfs(graph,n,l,m,x,y)
 print(ans)
+
+# 풀이 생각 : bfs를 이용해서 탐색을 하는 것은 같으나, 한 bfs가 수행되고 결과를 실행하는 것이 아니라, 전체를 bfs로 탐색후에 그제서야 결과값을 실행하고 루프를 돌아야 함
+# 그래서 결과값을 bfs마다 저장후 그래프 전체를 순회한 뒤에 결과값에 대한 액션 진행
+
+# 마지막 코드단에서 for중첩이 상당히 되는데 조금더 깔끔하게 진행을 할 수는 없을까
